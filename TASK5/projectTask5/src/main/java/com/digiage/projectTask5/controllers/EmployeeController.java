@@ -12,7 +12,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/employee")
+@RequestMapping(value = "/employee")
 public class EmployeeController {
 
     @Autowired
@@ -29,7 +29,7 @@ public class EmployeeController {
     }
 
     @PostMapping
-    public ResponseEntity<EmployeeDTO> insert(@RequestBody EmployeeDTO employeeDTO) {
+    public ResponseEntity<EmployeeDTO> insert(@Valid @RequestBody EmployeeDTO employeeDTO) {
         EmployeeDTO result = employeeService.insertEmployee(employeeDTO);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
