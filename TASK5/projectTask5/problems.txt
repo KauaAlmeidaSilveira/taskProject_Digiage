@@ -1,0 +1,21 @@
+
+Erro - Executando script direto no MySQL Workbench (Acesso NEGADO)
+
+Operation failed: There was an error while applying the SQL script to the database.
+ERROR 1142: CREATE command denied to user 'interview'@'191.254.185.20' for table 'tb_employees'
+SQL Statement:
+CREATE TABLE `employees`.`tb_employees` (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255),
+    email VARCHAR(255) UNIQUE,
+    telefone VARCHAR(20),
+    dataNascimento DATE,
+    cargo VARCHAR(255)
+)
+
+Erro - Executando ddl automatico do Hibernate (Acesso NEGADO)
+
+Error executing DDL "create table tb_employee (id integer not null auto_increment, cargo varchar(255),
+data_nascimento DATE, email varchar(255), nome varchar(255), telefone varchar(255), primary key (id))
+ engine=InnoDB" via JDBC [CREATE command denied to user 'interview'@'191.254.185.20' for table 'tb_employee']
+

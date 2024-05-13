@@ -5,6 +5,8 @@ import com.digiage.projectTask5.dto.EmployeeDTO;
 import com.digiage.projectTask5.repositories.EmployeeRepository;
 import com.digiage.projectTask5.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,9 +18,14 @@ public class EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
+//    @Transactional(readOnly = true)
+//    public List<EmployeeDTO> findAll() {
+//        return employeeRepository.findAll().stream().map(EmployeeDTO::new).toList();
+//    }
+
     @Transactional(readOnly = true)
-    public List<EmployeeDTO> findAll() {
-        return employeeRepository.findAll().stream().map(EmployeeDTO::new).toList();
+    public Page<EmployeeDTO> findAll(String cargo, Pageable pageable) {
+        return employeeRepository.findAll(pageable).map(EmployeeDTO::new);
     }
 
     @Transactional

@@ -4,6 +4,8 @@ import com.digiage.projectTask5.dto.EmployeeDTO;
 import com.digiage.projectTask5.services.EmployeeService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -19,9 +21,12 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     @GetMapping
-    public ResponseEntity<List<EmployeeDTO>> findAll() {
-        return ResponseEntity.ok(employeeService.findAll());
+    public ResponseEntity<Page<EmployeeDTO>> findAll(
+            @RequestParam(name = "cargo", defaultValue = "") String cargo,
+            Pageable pageable) {
+        return ResponseEntity.ok(employeeService.findAll(cargo, pageable));
     }
+
 
     @GetMapping(path = "/{id}")
     public ResponseEntity<EmployeeDTO> findById(@PathVariable Integer id) {
