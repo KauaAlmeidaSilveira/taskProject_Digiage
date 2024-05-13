@@ -18,11 +18,6 @@ public class EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
-//    @Transactional(readOnly = true)
-//    public List<EmployeeDTO> findAll() {
-//        return employeeRepository.findAll().stream().map(EmployeeDTO::new).toList();
-//    }
-
     @Transactional(readOnly = true)
     public Page<EmployeeDTO> findAll(String cargo, Pageable pageable) {
         return employeeRepository.findAll(pageable).map(EmployeeDTO::new);

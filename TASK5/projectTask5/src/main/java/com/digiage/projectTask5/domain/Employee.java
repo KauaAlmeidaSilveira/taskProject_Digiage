@@ -28,4 +28,7 @@ public class Employee {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dataNascimento;
     private String cargo;
+
+    @ManyToOne
+    private Department department;
 }
