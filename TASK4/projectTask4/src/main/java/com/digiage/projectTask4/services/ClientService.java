@@ -2,6 +2,7 @@ package com.digiage.projectTask4.services;
 
 import com.digiage.projectTask4.domain.Client;
 import com.digiage.projectTask4.dto.ClientDTO;
+import com.digiage.projectTask4.dto.ResultDTO;
 import com.digiage.projectTask4.repositories.ClientRepository;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,7 +68,7 @@ public class ClientService {
     }
 
     // Retorna uma String mostrando o total de clientes, clientes masculinos e femininos
-    public String getQntClientMascAndFem() {
+    public ResultDTO getQntClientMascAndFem() {
         int masc = 0;
         int fem = 0;
 
@@ -81,9 +82,9 @@ public class ClientService {
                     fem++;
                 }
             }
-            return "Total genres: " + size + "\nMasculino: " + masc + "\nFeminino: " + fem;
+            return new ResultDTO(size, masc, fem);
         }
-        return "Nenhum cliente cadastrado";
+        return null;
     }
 
     // Retorna a lista com todos os clientes

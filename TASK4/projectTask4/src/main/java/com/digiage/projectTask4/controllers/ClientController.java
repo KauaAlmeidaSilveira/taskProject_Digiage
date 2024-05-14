@@ -1,6 +1,7 @@
 package com.digiage.projectTask4.controllers;
 
 import com.digiage.projectTask4.dto.ClientDTO;
+import com.digiage.projectTask4.dto.ResultDTO;
 import com.digiage.projectTask4.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +28,7 @@ public class ClientController {
 
     // Retorna quantidade total de clientes, clientes masculinos e femininos.
     @GetMapping("/clientMascAndFem")
-    public ResponseEntity<String> getQntClientMascAndFem() {
+    public ResponseEntity<ResultDTO> getQntClientMascAndFem() {
         return ResponseEntity.ok(clientService.getQntClientMascAndFem());
     }
 
