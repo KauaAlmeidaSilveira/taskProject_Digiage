@@ -13,4 +13,16 @@ public class ResultDTO {
     private Integer total;
     private Integer masc;
     private Integer fem;
+
+    @Override
+    public String toString() {
+        return """
+               {
+                    "total": %d,
+                    "masc": %d,
+                    "fem": %d
+               }
+               """.formatted(total, masc, fem);
+    }
+
 }

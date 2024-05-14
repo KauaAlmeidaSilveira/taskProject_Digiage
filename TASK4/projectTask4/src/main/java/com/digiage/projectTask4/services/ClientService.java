@@ -9,8 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -82,7 +81,18 @@ public class ClientService {
                     fem++;
                 }
             }
-            return new ResultDTO(size, masc, fem);
+
+            ResultDTO resultDTO = new ResultDTO(size, masc, fem);
+
+            try {
+                BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/java/com/digiage/projectTask4/files/result.json"));
+                writer.write(resultDTO.toString());
+                writer.close();
+            } catch (IOException e) {
+                System.err.println("Erro ao escrever no arquivo: " + e.getMessage());
+            }
+
+            return resultDTO;
         }
         return null;
     }
