@@ -31,7 +31,7 @@ public class ControllerExceptionHandler {
     public ResponseEntity<CustomError> dataIntegrityViolation(DataIntegrityViolationException e, HttpServletRequest request) {
         HttpStatus status = HttpStatus.BAD_REQUEST;
         CustomError error = new CustomError(Instant.now(), status.value(),
-                "Email já cadastrado no sistema.",
+                e.getMessage(),
                 request.getRequestURI());
         return ResponseEntity.status(status).body(error);
     }

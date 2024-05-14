@@ -52,22 +52,22 @@ public class EmployeeService {
     }
 
     public void copyDtoToEntity(EmployeeDTO employeeDTO, Employee employee) {
-        if (employeeDTO.getId() != null){
+        if (employeeDTO.getId() != null) {
             employee.setId(employeeDTO.getId());
         }
-        if (employeeDTO.getNome() != null){
+        if (employeeDTO.getNome() != null) {
             employee.setNome(employeeDTO.getNome());
         }
-        if (employeeDTO.getEmail() != null){
+        if (employeeDTO.getEmail() != null) {
             employee.setEmail(employeeDTO.getEmail());
         }
-        if (employeeDTO.getTelefone() != null){
+        if (employeeDTO.getTelefone() != null) {
             employee.setTelefone(employeeDTO.getTelefone());
         }
-        if (employeeDTO.getDataNascimento() != null){
+        if (employeeDTO.getDataNascimento() != null) {
             employee.setDataNascimento(employeeDTO.getDataNascimento());
         }
-        if (employeeDTO.getCargo() != null){
+        if (employeeDTO.getCargo() != null) {
             employee.setCargo(employeeDTO.getCargo());
         }
     }
