@@ -1,8 +1,8 @@
 INSERT INTO tb_department (nome, descricao, status) VALUES
   ('Desenvolvimento de Software', 'Departamento responsável pelo desenvolvimento de software e aplicativos.', 'Ativo'),
-  ('Análise e Gestão de Dados', 'Departamento responsável pela análise de dados, gerenciamento de bancos de dados e análise de negócios.', 'Ativo'),
+  ('Analise e Gestão de Dados', 'Departamento responsável pela análise de dados, gerenciamento de bancos de dados e análise de negócios.', 'Ativo'),
   ('Engenharia de Software e Infraestrutura', 'Departamento responsável pela infraestrutura de TI, redes e engenharia de software.', 'Ativo'),
-  ('Gestão de Projetos e Qualidade', 'Departamento responsável pela gestão de projetos, garantia de qualidade e conformidade.', 'Ativo'),
+  ('Gestao de Projetos e Qualidade', 'Departamento responsável pela gestão de projetos, garantia de qualidade e conformidade.', 'Ativo'),
   ('Suporte Técnico e Atendimento ao Cliente', 'Departamento responsável por fornecer suporte técnico aos usuários e garantir a satisfação do cliente.', 'Ativo');
 
 

@@ -10,8 +10,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 @Service
 public class EmployeeService {
 
@@ -19,8 +17,9 @@ public class EmployeeService {
     private EmployeeRepository employeeRepository;
 
     @Transactional(readOnly = true)
-    public Page<EmployeeDTO> findAll(String cargo, Pageable pageable) {
-        return employeeRepository.findAll(pageable).map(EmployeeDTO::new);
+    public Page<EmployeeDTO> findAll(String department, Pageable pageable) {
+        Page<Employee> employeeList = employeeRepository.findByDepartmentName(department, pageable);
+        return employeeList.map(EmployeeDTO::new);
     }
 
     @Transactional

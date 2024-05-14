@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.List;
 
 @RestController
 @RequestMapping(value = "/employee")
@@ -22,9 +21,9 @@ public class EmployeeController {
 
     @GetMapping
     public ResponseEntity<Page<EmployeeDTO>> findAll(
-            @RequestParam(name = "cargo", defaultValue = "") String cargo,
+            @RequestParam(name = "department", defaultValue = "") String department,
             Pageable pageable) {
-        return ResponseEntity.ok(employeeService.findAll(cargo, pageable));
+        return ResponseEntity.ok(employeeService.findAll(department, pageable));
     }
 
 
