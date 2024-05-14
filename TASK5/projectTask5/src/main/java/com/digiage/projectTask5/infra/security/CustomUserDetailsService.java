@@ -15,6 +15,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
     private UserRepository repository;
 
+    // Método que busca um usuário pelo email
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = this.repository.findByEmail(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));

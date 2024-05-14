@@ -19,6 +19,10 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
+    // Metodo que retorna todos os funcionários de forma paginada
+    // ele recebe um parametro de departamento para filtrar os funcionários
+    // além disso, na url é possível passar parametros de paginação
+    // Exemplo: http://localhost:8080/employee?department=TI&page=0&size=5
     @GetMapping
     public ResponseEntity<Page<EmployeeDTO>> findAll(
             @RequestParam(name = "department", defaultValue = "") String department,

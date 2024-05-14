@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.time.Instant;
 
+// Classe que trata as exceções lançadas pelos controllers
 @ControllerAdvice
 public class ControllerExceptionHandler {
 
+    // Trata exceções de requisições com resource não encontrado
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<CustomError> resourceNotFound(ResourceNotFoundException e, HttpServletRequest request) {
         HttpStatus status = HttpStatus.NOT_FOUND;
@@ -27,6 +29,7 @@ public class ControllerExceptionHandler {
         return ResponseEntity.status(status).body(error);
     }
 
+    // Trata exceções de banco de dados, como violação de integridade
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<CustomError> dataIntegrityViolation(DataIntegrityViolationException e, HttpServletRequest request) {
         HttpStatus status = HttpStatus.BAD_REQUEST;
@@ -36,6 +39,7 @@ public class ControllerExceptionHandler {
         return ResponseEntity.status(status).body(error);
     }
 
+    // Trata exceções de validações de requisições
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<CustomError> methodArgumentNotValidation(MethodArgumentNotValidException e,
                                                                    HttpServletRequest request) {
