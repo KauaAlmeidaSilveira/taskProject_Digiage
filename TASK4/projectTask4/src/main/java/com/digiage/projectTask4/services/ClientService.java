@@ -2,7 +2,9 @@ package com.digiage.projectTask4.services;
 
 import com.digiage.projectTask4.domain.Client;
 import com.digiage.projectTask4.dto.ClientDTO;
+import com.digiage.projectTask4.repositories.ClientRepository;
 import com.google.gson.Gson;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +19,8 @@ import java.util.List;
 @Service
 public class ClientService {
 
-    private final List<Client> clients = new ArrayList<>();
+    @Autowired
+    private ClientRepository clientRepository;
 
     @Value("${api.url}")
     private String url;
@@ -52,7 +55,7 @@ public class ClientService {
                     Gson gson = new Gson();
                     Client[] resultClient = gson.fromJson(resp.toString(), Client[].class);
 
-                    clients.addAll(Arrays.asList(resultClient));
+                    clientRepository.saveAll(Arrays.asList(resultClient));
 
                 }
             } catch (Exception e) {
@@ -65,25 +68,28 @@ public class ClientService {
 
     // Retorna uma String mostrando o total de clientes, clientes masculinos e femininos
     public String getQntClientMascAndFem() {
-        carregarDados();
         int masc = 0;
         int fem = 0;
 
-        for (Client client : clients) {
-            if (client.gender.equals("M")) {
-                masc++;
-            } else {
-                fem++;
-            }
-        }
+        int size = clientRepository.findAll().size();
 
-        return "Total gender: " + clients.size() + "\nMasculino: " + masc + "\nFeminino: " + fem;
+        if (size != 0) {
+            for (Client client : clientRepository.findAll()) {
+                if (client.gender.equals("M")) {
+                    masc++;
+                } else {
+                    fem++;
+                }
+            }
+            return "Total genres: " + size + "\nMasculino: " + masc + "\nFeminino: " + fem;
+        }
+        return "Nenhum cliente cadastrado";
     }
 
     // Retorna a lista com todos os clientes
-    public List<ClientDTO> getAllClients() {
+    public List<ClientDTO> findAll() {
         carregarDados();
-        return clients.stream().map(ClientDTO::new).toList();
+        return clientRepository.findAll().stream().map(ClientDTO::new).toList();
     }
 
 }

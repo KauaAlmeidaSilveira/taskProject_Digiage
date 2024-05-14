@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "clients")
+@RequestMapping(value = "/clients")
 public class ClientController {
 
     @Autowired
@@ -19,9 +19,11 @@ public class ClientController {
 
     // Retorna a lista completa de todos os clientes.
     @GetMapping
-    public ResponseEntity<List<ClientDTO>> getClients() {
-        return ResponseEntity.ok(clientService.getAllClients());
+    public ResponseEntity<List<ClientDTO>> findAll() {
+        return ResponseEntity.ok(clientService.findAll());
     }
+
+
 
     // Retorna quantidade total de clientes, clientes masculinos e femininos.
     @GetMapping("/clientMascAndFem")
